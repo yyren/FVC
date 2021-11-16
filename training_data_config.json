@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "unfiltered_VCF": "HG001_gatk.vcf",
+            "BAM_file": "HG001_aligned.bam",
+            "goldStandard_VCF": "HG001_highConfidence.vcf",
+            "goldStandard_bedFile": "HG001_highConfidence_region.bed"
+        },
+        {
+            "unfiltered_VCF": "HG002_gatk.vcf",
+            "BAM_file": "HG002_aligned.bam",
+            "goldStandard_VCF": "HG002_highConfidence.vcf",
+            "goldStandard_bedFile": "HG002_highConfidence_region.bed"
+        }
+    ],
+    "refSeq": "/data/refSeq/hg19.fa",
+    "outDir": "/data/output"
+}
