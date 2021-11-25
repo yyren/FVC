@@ -17,6 +17,7 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model)
+
 *** Split VCF file with multiple samples into multiple VCF files with single sample ***
 
 *(only required for vcf with multiple samples) *
