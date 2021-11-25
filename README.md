@@ -19,10 +19,10 @@ Usage
 ### Filtering (exist pre-trained model)
 ***(option) Split VCF file with multiple samples into multiple VCF files with single sample***
 ```bash
-perl multi_samples_to_single.pl $in_vcf_file $outDir
-```
-input file: $in_vcf_file <br>
+perl multi_samples_to_single.pl $in_vcf $outDir
+input file: $in_vcf <br>
 output files: ${outDir}/${sampleId}.split.vcf <br>
+```
 
 **step1. Features construction**<br>
 ```bash
