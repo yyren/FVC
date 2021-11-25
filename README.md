@@ -17,7 +17,7 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model) <br>
-
+**step1. Features construction**<br>
 ** (optional step) multiple samples ** <br>
 split VCF file with multiple samples into multiple VCF files with single sample
 ```bash
