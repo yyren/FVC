@@ -1,5 +1,5 @@
 # FVC
-**FVC: an adaptive method for filtering variant calls from different analysis pipelines ** <br>
+**FVC: an adaptive method for filtering variant calls from different analysis pipelines**<br>
 
 It is freely available for academic use. However, users should consider the licensing of GIAB database about the original gold-standard variants and sequenced results.<br>
 
