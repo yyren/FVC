@@ -17,6 +17,12 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model)
+***(option) Split VCF file with multiple samples into multiple VCF files with single sample***
+```bash
+perl multi_samples_to_single.pl $in_vcf_file $outDir
+```
+input file: $in_vcf_file <br>
+output files: ${outDir}/${sampleId}.split.vcf <br>
 
 **step1. Features construction**<br>
 ```bash
@@ -97,13 +103,6 @@ output models: *${prefix_name}.snv.model* and *${prefix_name}.snv.model* <br>
 
 **step3. Filtering** <br>
 Same with ***Filtering (exist pre-trained model)*** step1-2
-
-***(option) Split VCF file with multiple samples into multiple VCF files with single sample***
-```bash
-perl multi_samples_to_single.pl $in_vcf_file $outDir
-```
-input file: $in_vcf_file <br>
-output files: ${outDir}/${sampleId}.split.vcf <br>
 
 Computational Environment
 ------------
