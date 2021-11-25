@@ -17,8 +17,9 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model)
-*** Split VCF file with multiple samples into multiple VCF files with single sample *** <br>
-*** (only required for vcf with multiple samples) *** <br>
+*** Split VCF file with multiple samples into multiple VCF files with single sample ***
+
+*(only required for vcf with multiple samples) *
 ```bash
 perl multi_samples_to_single.pl $in_vcf $outDir
 input file: $in_vcf <br>
