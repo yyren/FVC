@@ -17,12 +17,12 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model) <br>
-**(optional step) multiple samples**<br>
+**(optional step) VCF with multiple samples**<br>
 split VCF file with multiple samples into multiple VCF files with single sample
 ```bash
 perl multi_samples_to_single.pl $in_vcf $outDir
-input file: $in_vcf <br>
-output files: ${outDir}/${sampleId}.split.vcf <br>
+input file: $in_vcf
+output files: ${outDir}/${sampleId}.split.vcf
 ```
 
 **step1. Features construction**<br>
