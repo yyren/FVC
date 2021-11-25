@@ -17,8 +17,7 @@ Introduction
 Usage
 ------------
 ### Filtering (exist pre-trained model) <br>
-**step1. Features construction**<br>
-** (optional step) multiple samples ** <br>
+**(optional step) multiple samples**<br>
 split VCF file with multiple samples into multiple VCF files with single sample
 ```bash
 perl multi_samples_to_single.pl $in_vcf $outDir
