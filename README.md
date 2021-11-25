@@ -11,7 +11,7 @@ Introduction
 
 ![AUC](Pictures/Comparison_of_different_methods.jpg)<br>
 
-![](Pictures/Measurement_using_MCC_OFO.png)<br>
+![](Pictures/Measurement_using_MCC_OFO.jpg)<br>
 
 
 Usage
