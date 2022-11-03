@@ -51,7 +51,7 @@ usage_filter() {
 	echo "-i <input_vcf>                    unfiltered VCF file"
 	echo "-o <output_vcf>                   output filtered VCF file"
 	echo "-p <inrecord_snv>                 input record file with SNV features (/data/snv.record)"
-	echo "-q <inrecord_indel>               Output file with INDEL features (/data/indel.record)"
+	echo "-q <inrecord_indel>               input record file with INDEL features (/data/indel.record)"
 	echo "-m <pre-trained snv model>        pre-trained snv model file (/model/HG007_snv.model)"
 	echo "-n <pre-trained indel model>      pre-trained indel model file (/model/HG007_indel.model)"
 	echo ""

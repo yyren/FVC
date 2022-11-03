@@ -38,8 +38,8 @@ singularity exec FVC_image.sif bash ${absolute_path}/Features_construction.sh \
 
 -t: cpu cores (about 23min/40cores  for each WGS VCF file), we suggest use as many as you can in this step. <br>
 -r: the human refSeq used for read alignment. <br>
-The 'input_raw_file.vcf' contains the variants derived from the reads aligned file 'input.bam'. <br>
-
+The 'input.vcf' contains the variants derived from the reads aligned file 'input.bam'. <br>
+note: users should provide the full path of the files
 
 **step2. Filtering**<br>
 ```bash

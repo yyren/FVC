@@ -56,6 +56,9 @@ while(my $line=<IN>){
 		if(exists $fnvc_predict_indel{$id}){
 			$predict_value=$fnvc_predict_indel{$id};
 		}
+		if(exists $fnvc_predict_snp{$id}){
+			$predict_value=$fnvc_predict_snp{$id};
+		}
 		$recs[7]=$recs[7].';FVC='.$predict_value;
 		if($predict_value>=0.5){
 			$recs[6]='PASS'
