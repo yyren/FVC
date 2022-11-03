@@ -109,6 +109,7 @@ if [[ $function = 'filter' ]]; then
 	
 	# Add filtering information into vcf file
 	perl $current_bash_dir/merge_predict_results.pl $out_path/FVC_predict_snv.txt $out_path/FVC_predict_indel.txt $in_vcf $out_vcf
+	rm $out_path/FVC_predict_snv.txt $out_path/FVC_predict_indel.txt
 elif [[ $function = 'train' ]]; then
 	python $current_bash_dir/FVC_Train.py --in_tp $tp_snv_record --in_fp $fp_snv_record --out_model $output_snv_model
 	python $current_bash_dir/FVC_Train.py --in_tp $tp_indel_record --in_fp $fp_indel_record --out_model $output_indel_model
