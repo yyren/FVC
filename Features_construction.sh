@@ -55,18 +55,37 @@ out_dir=${snv_feature%/*}
 temp_folder="$out_dir/temp_${timestamp}"
 echo "Step 1/4 Creat temp folder: $temp_folder"
 mkdir $temp_folder
-cd $temp_folder
+
 
 # adjust the sampleID according to the bam file
+# or adjust the sampleID according to the vcf file if the sampleID is not exist in bam file.
 bam_sid=`$samtools_software view -H $bamfile | grep '@RG' |awk 'BEGIN{FS="SM:"}{print $2}'|cut -f 1`
 vcf_sid=`grep '#CHROM' $input_vcf | cut -f 10 | sed 's/\n//'`
+input_bam=$bamfile
+echo "sampleID in Bam: $bam_sid"
+echo "sampleID in VCF: $vcf_sid"
 in_file=$input_vcf
-if [[ $bam_sid != $vcf_sid ]]; then
-	echo "Warning: The sampleID is not consistent between VCF and Bam"
-	echo "Warning: change the SID in vcfID to bamID: $vcf_sid to $bam_sid"
-	perl $current_bash_dir/change_header.pl $in_file $temp_folder/input_file.vcf $bam_sid
-	in_file="$temp_folder/input_file.vcf"
+if [[ ! -f $input_bam{.bai} ]]; then
+	$samtools_software index $input_bam
 fi
+
+if [[ $bam_sid != '' ]]; then
+    if [[ $bam_sid != $vcf_sid ]]; then
+        echo "Warning: The sampleID is not consistent between VCF and Bam"
+        echo "Warning: change the SID in vcfID to bamID: $vcf_sid to $bam_sid"
+        perl $current_bash_dir/change_header.pl $in_file $temp_folder/input_file.vcf $bam_sid
+        in_file="$temp_folder/input_file.vcf"
+    fi
+else
+    $samtools_software view -H $input_bam >$temp_folder/bam_header.txt
+    echo -e "@RG\tID:$vcf_sid\tSM:$vcf_sid">>$temp_folder/bam_header.txt
+    $samtools_software reheader $temp_folder/bam_header.txt $input_bam >${input_bam}.fvc
+    input_bam=${input_bam}.fvc
+    $samtools_software index $input_bam
+    
+fi
+
+
 
 for((i=0;i<=$[threads - 1];i++))
 do
@@ -81,13 +100,14 @@ do
     awk -v metainfor_lines=$metainfor_lines -v start_idx=$start_idx -v end_idx=$end_idx '{if((NR<=metainfor_lines) || ((NR>=start_idx) && (NR<=end_idx)))print}' $in_file > $temp_folder/${i}_raw.vcf
 done
 
+#cd $temp_folder
 ###### features construction ####
 ## VariantAnnotator and features construction ########
 date_log=`date +'%Y%m%d_%H_%M_%S'`
 echo "Step 2/4 Start VariantAnnotator: $date_log"
 for((i=0;i<=$[threads - 1];i++))
 do
-	$GATK --java-options "-Djava.io.tmpdir=./" VariantAnnotator -R $reference -I $bamfile -V $temp_folder/${i}_raw.vcf -O $temp_folder/${i}_raw_add_feature.vcf --enable-all-annotations true > gatk_log_${i}.txt 2>&1 &
+	$GATK --java-options "-Djava.io.tmpdir=./" VariantAnnotator -R $reference -I $input_bam -V $temp_folder/${i}_raw.vcf -O $temp_folder/${i}_raw_add_feature.vcf --enable-all-annotations true > $temp_folder/gatk_log_${i}.txt 2>&1 &
 done
 wait
 
@@ -143,6 +163,14 @@ perl $current_bash_dir/add_region_feature.pl $temp_folder/merged_features_snv_te
 # remove temp files
 if [[ -d $temp_folder ]]; then
 	rm -r $temp_folder
+fi
+
+if [[ -f ${bamfile}.fvc ]]; then
+	rm ${bamfile}.fvc*
+fi
+
+if find ./ -type f -name "tmp_read_resource*.config" -print -quit > /dev/null 2>&1; then
+	rm tmp_read_resource*.config
 fi
 
 date_log=`date +'%Y%m%d_%H_%M_%S'`
