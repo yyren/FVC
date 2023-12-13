@@ -110,7 +110,7 @@ Computational Environment
 Users can download the singularity image from our docker image sofware responsibility<br>
 
 ### FVC Docker image
-The FVC_image.sif can be downlaod from http://bmap.sjtu.edu.cn/softstorage/details/31 or https://drive.google.com/file/d/1PkcX2MZFYyi86wqkjC5pia-qElvhZOcP/view?usp=sharing
+The FVC_image.sif can be downlaod from http://bmap.sjtu.edu.cn/softstorage/details/31 (or https://drive.google.com/file/d/1PkcX2MZFYyi86wqkjC5pia-qElvhZOcP/view?usp=sharing)
 
 ![](Pictures/FVC_docker_image.png)<br>
 
@@ -148,7 +148,7 @@ OR manually install the requirements with the version equal or later:<br>
 GATK(version 4.1.9)
 
 ### Docker image for variant calling
-http://bmap.sjtu.edu.cn/softstorage/details/21 or https://drive.google.com/file/d/1oGmi8wnV6GDMJq43BDzwjhPtohE9KKH3/view?usp=sharing
+http://bmap.sjtu.edu.cn/softstorage/details/21 (or https://drive.google.com/file/d/1oGmi8wnV6GDMJq43BDzwjhPtohE9KKH3/view?usp=sharing)
 
 ![](Pictures/Variant_calling_docker_image.png)<br>
 
